@@ -23,7 +23,17 @@ const notesContainer = document.querySelector("#notes-container");
 
 
 // funções
+function showNotes() {
+	getNotes().forEach((note) => {
+		const noteElement = createNote(note.id, note.content, note.fixed);
+
+		notesContainer.appendChild(noteElement);
+	});
+}
+
+
 function addNote() {
+	const notes = getNotes();
 
 	const noteObject = {
 		id: generatedId(),
@@ -33,7 +43,13 @@ function addNote() {
 
 	const noteElement = createNote(noteObject.id, noteObject.content);
 
-	notesContainer.appendChild(noteElement)
+	notesContainer.appendChild(noteElement);
+
+	notes.push(noteObject);
+
+	saveNotes(notes);
+
+	noteInput.value = "";
 
 }
 
@@ -58,7 +74,21 @@ function createNote(id, content, fixed) {
 	return element;
 }
 
+// Local Storage
+function getNotes() {
+	const notes = JSON.parse(localStorage.getItem("notes") || "[]");
+
+	return notes;
+}
+
+
+function saveNotes(notes) {
+	localStorage.setItem("notes", JSON.stringify(notes));
+}
 
 
 // eventos
 addNoteBtn.addEventListener("click", () => addNote());
+
+// inicialização:
+showNotes();
