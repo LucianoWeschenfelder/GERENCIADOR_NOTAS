@@ -136,14 +136,15 @@ header {
     position: absolute;
     left: 10px;
     bottom: 10px;
+    opacity: .7;
     font-size: 1.2rem;
     background-color: var(--busque);
     cursor: pointer;
     padding: 5px;
     border-radius: 3px;
 }
-.note:hover > i,
-.note:focus-within > i {
+.note:hover > :is(.bi-x-lg, .bi-file-earmark-plus, .bi-pin:hover ),
+.note:focus-within > :is(.bi-x-lg, .bi-file-earmark-plus) {
     opacity: 1;
 }
 
