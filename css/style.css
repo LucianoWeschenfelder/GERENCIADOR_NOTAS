@@ -13,7 +13,7 @@
     --bg: #212124;
     --texto: #fdfdfdcc;
     --borda: #1a1919;
-    --busque: #4c4c4e;  
+    --busque: #4c4c4e;
     --hover-bg: #fdfdfdcc;
     --hover-texto: #111;
 }
@@ -62,7 +62,7 @@ header {
 #export-notes,
 #btnTema {
     background-color: var(--busque);
-    border: 2px solid var(--borda) ;
+    border: 2px solid var(--borda);
     border-radius: 4px;
     color: var(--texto);
     padding: 5px 15px;
@@ -74,7 +74,7 @@ header {
 #export-notes:hover,
 #btnTema:hover,
 #add-note-container:hover button {
-    background-color: var(--hover-bg) ;
+    background-color: var(--hover-bg);
     color: var(--hover-texto);
 }
 
@@ -143,8 +143,9 @@ header {
     padding: 5px;
     border-radius: 3px;
 }
-.note:hover > :is(.bi-x-lg, .bi-file-earmark-plus, .bi-pin:hover ),
-.note:focus-within > :is(.bi-x-lg, .bi-file-earmark-plus) {
+
+.note:hover> :is(.bi-x-lg, .bi-file-earmark-plus, .bi-pin:hover),
+.note:focus-within> :is(.bi-x-lg, .bi-file-earmark-plus) {
     opacity: 1;
 }
 
@@ -172,4 +173,38 @@ header {
 
 .note.fixed {
     background-color: var(--busque);
+}
+
+
+@media(max-width: 450px) {
+    header {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    header h1,
+    #search-container {
+        width: 100%;
+        text-align: center;
+    }
+
+    #export-notes,
+    header .container {
+        flex: 1;
+    }
+
+    #search-container,
+    #search-input {
+        width: 100%;
+    }
+
+    |#add-note-container {
+        width: 100%;
+        padding: 0 2rem;
+    }
+
+    #notes-container {
+        grid-template-columns: repeat(auto-fill, 100%);
+    }
 }
